@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-md">
+
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a (click)="loggedout()">Logout</a></li>
+    </ul>
+
+    <div *ngIf="loggedIn()" class="dropdown">
+      <a class="dropdown-toggle text-light" >
+        welcome User
+      </a>
+    
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#"><i class="=fa fa-user"></i>iEdit Profile</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#"><i class="=fa fa-sign-out"></i>Logout</a>
+      </div>
+    </div>
+    <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+      <input class="form-control mr-sm-2" type="text" placeholder="Username" required [(ngModel)]="model.username" [ngModelOptions]="{standalone: true}">
+      <input class="form-control mr-sm-2" type="password" placeholder="password" required [(ngModel)]="model.password" [ngModelOptions]="{standalone: true}" >
+      <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success my-2 my-sm-0">Login</button>
+    </form>
+  
+</nav>
